@@ -4,84 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
     <style>
         body {
             margin: 0;
         }
         .visual {
             background-image: url(./images/visual_bg.jpg);
+            background-position: center;
+            background-size: cover;
         }
         .inner {
             height: 646px;
-            width: 1100px;
+            width: min(1100px, 100%);
             margin: 0 auto;
-            background-color: skyblue;
             position: relative;
-        }
-        .visual .title {
-            position:absolute;
-            top: 88px;
-            left: -10px;
-        }
-        .visual .pcup1 {
-            position: absolute;
-            bottom: 0;
-            right: -47px;
-            background-color: orange;
+            overflow: hidden;
         }
 
-        .visual .cup1.text {
+        .cat-scene {
             position: absolute;
-            top: -30px;
-            right: 220px;
+            left: 50%;
+            top: 50%;
+            width: clamp(320px, 48vw, 560px);
+            transform: translate(-50%, -50%);
         }
-        .visual .pcup2 {
-            position: absolute;
-            bottom: 0;
-            right: 162px;
-            background-color: yellowgreen;
+
+        .cat img {
+            display: block;
+            width: 100%;
+            height: auto;
         }
-        .visual .cup2.text {
+
+        .sunglasses {
             position: absolute;
-            top: 150px;
-            right: 250px;
+            left: 50%;
+            top: -9%;
+            width: 70%;
+            transform: translate(-50%, 58%);
+            animation: sunglasses-rise 1.25s ease-out 0.45s forwards;
         }
-        .visual .pspoon {
+
+        .sunglasses img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .ribbon {
             position: absolute;
-            bottom: 0;
-            left: 275px;
+            right: 9%;
+            top: 5%;
+            width: 18%;
+            transform: rotate(10deg);
+        }
+
+        .ribbon img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        @keyframes sunglasses-rise {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, 58%);
+            }
+            75% {
+                opacity: 1;
+                transform: translate(-50%, -6%);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .inner {
+                height: 520px;
+            }
+
+            .cat-scene {
+                width: min(86vw, 420px);
+            }
         }
     </style>
 </head>
 <body>
     <section class="visual">
         <div class="inner">
-            <div class="cat fade-in">
-                <img src="./images/cat.png" alt="">
-            </div>
-            <div class="sunglasses">
-                <img src="./images/visual_cup1.png" alt="" class="cup1 image">
-                <img src="./images/visual_cup1_text.png" alt="" class="cup1 text">
-            </div>
-            <div class="pcup2 fade-in">
-                <img src="./images/visual_cup2.png" alt="" class="cup2 image">
-                <img src="./images/visual_cup2_text.png" alt="" class="cup2 text">
-            </div>
-            <div class="pspoon fade-in">
-                <img src="./images/visual_spoon.png" alt="">
+            <div class="cat-scene">
+                <div class="cat">
+                    <img src="./images/cat.png" alt="">
+                </div>
+                <div class="sunglasses">
+                    <img src="./images/sunglasses.png" alt="">
+                </div>
+                <div class="ribbon">
+                    <img src="./images/ribbon.png" alt="">
+                </div>
             </div>
         </div>
     </section>
-    <script>
-        const fadeEls = document.querySelectorAll('.visual .fade-in');
-        gsap.from(fadeEls, {
-            duration: 2,
-            scale: .3,
-            ease: "none",
-            opacity: 0,
-            stagger: 0.7
-        })
-    </script>
 </body>
 </html>
