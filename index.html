@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +7,38 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <main class="app" aria-label="Cat dress up game">
-    <section class="intro-screen" aria-label="Start screen">
-      <div class="monitor">
-        <div class="monitor-screen">
-          <button class="cat-start" type="button" aria-label="Start dress up">
-            <img src="img/cat.png" alt="Cat">
-          </button>
+  <main class="app" aria-label="&#44256;&#50577;&#51060; &#50743;&#44040;&#50500;&#51077;&#55176;&#44592;">
+    <section class="showcase" aria-label="&#44256;&#50577;&#51060; &#46300;&#47112;&#49828;&#50629;">
+      <div class="scene intro-scene">
+        <p class="hint">&#44256;&#50577;&#51060;&#47484; &#53364;&#47533;&#54644;&#48372;&#49464;&#50836;</p>
+        <span class="down-arrow" aria-hidden="true"></span>
+        <button class="cat-start" type="button" aria-label="&#46300;&#47112;&#49828;&#50629; &#49884;&#51089;&#54616;&#44592;">
+          <img src="img/cat.png" alt="&#44256;&#50577;&#51060;">
+        </button>
+      </div>
+
+      <div class="scene dress-scene" aria-label="&#46300;&#47112;&#49828;&#50629; &#54868;&#47732;">
+        <div class="cat-stage" aria-live="polite">
+          <img src="img/cat.png" class="cat-img" alt="&#44256;&#50577;&#51060;">
         </div>
-        <div class="monitor-neck"></div>
-        <div class="monitor-stand"></div>
-      </div>
-      <p class="hint">Click the cat</p>
-    </section>
 
-    <section class="dress-screen" aria-label="Dress up screen">
-      <div class="cat-stage" aria-live="polite">
-        <img src="img/cat.png" class="cat-img" alt="Cat">
-      </div>
+        <section class="closet" aria-label="&#50500;&#51060;&#53596; &#49440;&#53469;">
+          <nav class="category-tabs" aria-label="&#50500;&#51060;&#53596; &#52852;&#53580;&#44256;&#47532;">
+            <button class="tab-button is-active" type="button" data-category="accessory">&#50501;&#49464;&#49436;&#47532;</button>
+            <button class="tab-button" type="button" data-category="hat">&#47784;&#51088;</button>
+            <button class="tab-button" type="button" data-category="clothes">&#51032;&#49345;</button>
+            <button class="tab-button" type="button" data-category="more">&#45908;&#48372;&#44592;</button>
+          </nav>
 
-      <div class="item-bar" aria-label="Dress up items"></div>
+          <div class="closet-row">
+            <button class="round-nav" type="button" aria-label="&#51060;&#51204; &#50500;&#51060;&#53596;">&#8249;</button>
+            <div class="item-bar" aria-label="&#46300;&#47112;&#49828;&#50629; &#50500;&#51060;&#53596;"></div>
+            <button class="round-nav" type="button" aria-label="&#45796;&#51020; &#50500;&#51060;&#53596;">&#8250;</button>
+          </div>
+
+          <p class="empty-message" hidden>&#50500;&#51649; &#51456;&#48708; &#51473;&#51060;&#50640;&#50836;</p>
+        </section>
+      </div>
     </section>
   </main>
 
