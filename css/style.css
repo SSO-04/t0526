@@ -189,17 +189,17 @@ button {
   left: 50%;
   top: 54%;
   z-index: 1;
-  width: clamp(1180px, 88vw, 1680px);
+  width: clamp(1500px, 112vw, 2300px);
   aspect-ratio: 3 / 2;
   margin-top: 0;
   opacity: 0;
-  transform: translate(-50%, -58%) scale(0.72);
+  transform: translate(-50%, -55%) scale(0.72);
   transition: opacity 0.52s ease 0.2s, transform 0.9s cubic-bezier(0.2, 0.8, 0.24, 1) 0.08s;
 }
 
 .app.is-started .cat-stage {
   opacity: 1;
-  transform: translate(-50%, -58%) scale(1);
+  transform: translate(-50%, -55%) scale(1);
 }
 
 .cat-img {
@@ -297,10 +297,10 @@ button {
 .closet {
   position: absolute;
   left: 50%;
-  top: calc(50% + clamp(310px, 25vw, 510px));
-  bottom: auto;
+  top: auto;
+  bottom: max(54px, env(safe-area-inset-bottom));
   z-index: 5;
-  width: clamp(720px, 44vw, 980px);
+  width: clamp(760px, 54vw, 1100px);
   margin-top: 0;
   padding: clamp(34px, 2.4vw, 46px) clamp(20px, 2vw, 32px) clamp(18px, 1.6vw, 26px);
   border-radius: 0;
@@ -695,13 +695,13 @@ button {
   }
 
   .cat-stage {
-    top: 50%;
-    width: min(130vw, 1040px);
+    top: 53%;
+    width: min(172vw, 1320px);
   }
 
   .closet {
     top: auto;
-    bottom: 26px;
+    bottom: 46px;
     width: min(92vw, 520px);
     padding: 30px 12px 14px;
   }
@@ -735,20 +735,20 @@ button {
   }
 }
 
-@media (max-height: 720px) {
+@media (max-height: 720px) and (min-width: 861px) {
   .showcase {
     height: 100vh;
     min-height: 100vh;
   }
 
   .cat-stage {
-    top: 49%;
-    width: min(98vw, 1280px);
+    top: 51%;
+    width: min(136vw, 1640px);
   }
 
   .closet {
     top: auto;
-    bottom: 18px;
+    bottom: 36px;
     width: min(72vw, 760px);
     padding: 28px 18px 12px;
   }
