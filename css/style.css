@@ -189,7 +189,7 @@ button {
   left: 50%;
   top: 54%;
   z-index: 1;
-  width: clamp(1600px, 125vw, 3200px);
+  width: clamp(1180px, 88vw, 1680px);
   aspect-ratio: 3 / 2;
   margin-top: 0;
   opacity: 0;
@@ -696,7 +696,7 @@ button {
 
   .cat-stage {
     top: 50%;
-    width: min(150vw, 1040px);
+    width: min(130vw, 1040px);
   }
 
   .closet {
@@ -743,7 +743,7 @@ button {
 
   .cat-stage {
     top: 49%;
-    width: min(116vw, 1280px);
+    width: min(98vw, 1280px);
   }
 
   .closet {
