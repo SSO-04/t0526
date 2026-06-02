@@ -1,110 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        .visual {
-            background-image: url(./images/visual_bg.jpg);
-            background-position: center;
-            background-size: cover;
-        }
-        .inner {
-            height: 646px;
-            width: min(1100px, 100%);
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cat-scene {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: clamp(320px, 48vw, 560px);
-            transform: translate(-50%, -50%);
-        }
-
-        .cat img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        .sunglasses {
-            position: absolute;
-            left: 50%;
-            top: -9%;
-            width: 70%;
-            transform: translate(-50%, 58%);
-            animation: sunglasses-rise 1.25s ease-out 0.45s forwards;
-        }
-
-        .sunglasses img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        .ribbon {
-            position: absolute;
-            right: 9%;
-            top: 5%;
-            width: 18%;
-            transform: rotate(10deg);
-        }
-
-        .ribbon img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        @keyframes sunglasses-rise {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, 58%);
-            }
-            75% {
-                opacity: 1;
-                transform: translate(-50%, -6%);
-            }
-            100% {
-                opacity: 1;
-                transform: translate(-50%, 0);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .inner {
-                height: 520px;
-            }
-
-            .cat-scene {
-                width: min(86vw, 420px);
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat Dress Up</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <section class="visual">
-        <div class="inner">
-            <div class="cat-scene">
-                <div class="cat">
-                    <img src="./images/cat.png" alt="">
-                </div>
-                <div class="sunglasses">
-                    <img src="./images/sunglasses.png" alt="">
-                </div>
-                <div class="ribbon">
-                    <img src="./images/ribbon.png" alt="">
-                </div>
-            </div>
+  <main class="app" aria-label="Cat dress up game">
+    <section class="intro-screen" aria-label="Start screen">
+      <div class="monitor">
+        <div class="monitor-screen">
+          <button class="cat-start" type="button" aria-label="Start dress up">
+            <img src="img/cat.png" alt="Cat">
+          </button>
         </div>
+        <div class="monitor-neck"></div>
+        <div class="monitor-stand"></div>
+      </div>
+      <p class="hint">Click the cat</p>
     </section>
+
+    <section class="dress-screen" aria-label="Dress up screen">
+      <div class="cat-stage" aria-live="polite">
+        <img src="img/cat.png" class="cat-img" alt="Cat">
+      </div>
+
+      <div class="item-bar" aria-label="Dress up items"></div>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
 </body>
 </html>

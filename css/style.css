@@ -1,0 +1,408 @@
+:root {
+  --bg: #fff6ec;
+  --point: #ff9bb3;
+  --point-light: #ffe1ec;
+  --mint: #d9f3ec;
+  --yellow: #fff0b8;
+  --text: #5a3e36;
+  --white: #ffffff;
+  --shadow: 0 18px 38px rgba(90, 62, 54, 0.14);
+  --soft-shadow: 0 10px 22px rgba(90, 62, 54, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(255, 155, 179, 0.18) 0 7px, transparent 8px),
+    radial-gradient(circle at 88% 24%, rgba(164, 216, 205, 0.22) 0 8px, transparent 9px),
+    radial-gradient(circle at 78% 82%, rgba(255, 240, 184, 0.32) 0 10px, transparent 11px),
+    var(--bg);
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.intro-screen,
+.dress-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: opacity 0.55s ease, transform 0.75s ease, visibility 0.55s ease;
+}
+
+.intro-screen {
+  flex-direction: column;
+  gap: 18px;
+}
+
+.app.is-started .intro-screen {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.92) translateY(-18px);
+  pointer-events: none;
+}
+
+.monitor {
+  width: min(76vw, 540px);
+  filter: drop-shadow(0 22px 32px rgba(90, 62, 54, 0.16));
+}
+
+.monitor-screen {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  padding: clamp(14px, 3vw, 26px);
+  border: clamp(12px, 2.5vw, 20px) solid var(--white);
+  border-radius: 32px;
+  background: linear-gradient(180deg, #fffaf4 0%, #ffeef4 100%);
+  box-shadow: inset 0 0 0 3px rgba(255, 155, 179, 0.2);
+}
+
+.monitor-screen::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  width: 36px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 155, 179, 0.45);
+}
+
+.monitor-neck {
+  width: 76px;
+  height: 34px;
+  margin: -2px auto 0;
+  border-radius: 0 0 18px 18px;
+  background: var(--white);
+}
+
+.monitor-stand {
+  width: 170px;
+  height: 28px;
+  margin: 0 auto;
+  border-radius: 999px;
+  background: var(--white);
+}
+
+.cat-start {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cat-start img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.32s ease;
+}
+
+.cat-start:hover img,
+.cat-start:focus-visible img {
+  transform: scale(1.06) translateY(-3px);
+  animation: cat-pop 0.52s ease;
+}
+
+.cat-start:focus-visible,
+.item-button:focus-visible {
+  outline: 3px solid var(--point);
+  outline-offset: 5px;
+}
+
+.hint {
+  margin: 0;
+  color: rgba(90, 62, 54, 0.78);
+  font-size: clamp(15px, 2vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.dress-screen {
+  flex-direction: column;
+  gap: clamp(20px, 4vh, 42px);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.86);
+  pointer-events: none;
+}
+
+.app.is-started .dress-screen {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.cat-stage {
+  position: relative;
+  width: min(86vw, 680px);
+  aspect-ratio: 3 / 2;
+  animation: stage-enter 0.9s cubic-bezier(0.2, 0.8, 0.24, 1) both;
+}
+
+.cat-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 22px rgba(90, 62, 54, 0.13));
+  user-select: none;
+  pointer-events: none;
+}
+
+.dress-item {
+  position: absolute;
+  display: block;
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+.dress-item.is-on {
+  opacity: 1;
+}
+
+.sunglasses {
+  z-index: 3;
+  width: 25%;
+  top: 26%;
+  left: 37%;
+}
+
+.hat {
+  z-index: 4;
+  width: 25%;
+  top: -2%;
+  left: 38%;
+}
+
+.ribbon {
+  z-index: 5;
+  width: 14%;
+  top: 31%;
+  left: 59%;
+}
+
+.clothes {
+  z-index: 2;
+  width: 34%;
+  top: 50%;
+  left: 33%;
+}
+
+.sunglasses.is-on {
+  animation: rise-to-eyes 0.55s cubic-bezier(0.2, 0.9, 0.22, 1.18) both;
+}
+
+.hat.is-on {
+  animation: drop-hat 0.58s cubic-bezier(0.22, 1.32, 0.42, 1) both;
+}
+
+.ribbon.is-on {
+  animation: ribbon-fade 0.45s ease both;
+}
+
+.clothes.is-on {
+  animation: clothes-up 0.55s ease both;
+}
+
+.item-bar {
+  width: min(100%, 820px);
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 6px 18px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.item-button {
+  flex: 0 0 auto;
+  min-width: 132px;
+  min-height: 74px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 17px;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--soft-shadow);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item-button:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.item-button.is-active {
+  border-color: var(--point);
+  background: var(--point-light);
+}
+
+.button-icon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.button-label {
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+@keyframes cat-pop {
+  0%, 100% {
+    transform: scale(1.06) translateY(-3px);
+  }
+
+  45% {
+    transform: scale(1.1) translateY(-9px);
+  }
+}
+
+@keyframes stage-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.62) translateY(18px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes rise-to-eyes {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) scale(0.88);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes drop-hat {
+  0% {
+    opacity: 0;
+    transform: translateY(-90px) rotate(-5deg);
+  }
+
+  76% {
+    opacity: 1;
+    transform: translateY(8px) rotate(2deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes ribbon-fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.72) rotate(-10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes clothes-up {
+  0% {
+    opacity: 0;
+    transform: translateY(64px) scale(0.96);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .app {
+    min-height: 100svh;
+    padding: 18px 0;
+  }
+
+  .intro-screen,
+  .dress-screen {
+    padding: 18px 0;
+  }
+
+  .monitor {
+    width: min(88vw, 460px);
+  }
+
+  .monitor-screen {
+    border-radius: 24px;
+  }
+
+  .cat-stage {
+    width: min(94vw, 560px);
+  }
+
+  .item-bar {
+    justify-content: flex-start;
+    padding-inline: 18px;
+  }
+
+  .item-button {
+    min-width: 124px;
+  }
+}
+
+@media (max-height: 620px) {
+  .dress-screen {
+    gap: 12px;
+  }
+
+  .cat-stage {
+    width: min(72vw, 520px);
+  }
+
+  .item-button {
+    min-height: 62px;
+  }
+}
